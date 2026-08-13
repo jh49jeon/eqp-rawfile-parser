@@ -1,0 +1,906 @@
+{
+  "version": 30,
+  "parameters": [
+    {
+      "name": "chuck_temp",
+      "unit": "COT",
+      "offset": 4096,
+      "size": 4,
+      "dtype": "float32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "confirmed",
+      "ambiguous": false,
+      "rejected_candidates": [],
+      "evidence": [
+        {
+          "set": "set01",
+          "before": "25.0",
+          "after": "30.0"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "bake_time",
+      "unit": "BAKE",
+      "offset": 9280,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "deprecated",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 9280,
+          "size": 2,
+          "dtype": "int16",
+          "endian": "little"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set02",
+          "before": "60",
+          "after": "90"
+        },
+        {
+          "set": "set21",
+          "before": "45000",
+          "after": "60000"
+        }
+      ],
+      "superseded_by": "bake_time",
+      "disputed_reason": "second_observation",
+      "disputed_by": "bake_time(재검증)",
+      "disputed_at_set": "set21"
+    },
+    {
+      "name": "spin_rpm",
+      "unit": "COT",
+      "offset": 14528,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "big",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "deprecated",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 14530,
+          "size": 2,
+          "dtype": "int16",
+          "endian": "big"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set03",
+          "before": "1500",
+          "after": "1800"
+        },
+        {
+          "set": "set22",
+          "before": "40000",
+          "after": "50000"
+        }
+      ],
+      "superseded_by": "spin_rpm",
+      "disputed_reason": "second_observation",
+      "disputed_by": "spin_rpm(재검증)",
+      "disputed_at_set": "set22"
+    },
+    {
+      "name": "nozzle_id",
+      "unit": "DEV",
+      "offset": 18946,
+      "size": 2,
+      "dtype": "int16",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "confirmed",
+      "ambiguous": false,
+      "rejected_candidates": [],
+      "evidence": [
+        {
+          "set": "set04",
+          "before": "3",
+          "after": "5"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "recipe_ts",
+      "unit": "TRACK",
+      "offset": 23568,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "deprecated",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 23568,
+          "size": 4,
+          "dtype": "timestamp",
+          "endian": "little"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set05",
+          "before": "1735689600",
+          "after": "1767225600"
+        },
+        {
+          "set": "set23",
+          "before": "1700000000",
+          "after": "1750000000"
+        }
+      ],
+      "superseded_by": "recipe_ts",
+      "disputed_reason": "second_observation",
+      "disputed_by": "recipe_ts(재검증)",
+      "disputed_at_set": "set23"
+    },
+    {
+      "name": "exhaust_flow",
+      "unit": "COT",
+      "offset": 28168,
+      "size": 8,
+      "dtype": "float64",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "confirmed",
+      "ambiguous": false,
+      "rejected_candidates": [],
+      "evidence": [
+        {
+          "set": "set06",
+          "before": "12.75",
+          "after": "14.5"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "edge_bead_width",
+      "unit": "COT",
+      "offset": 32772,
+      "size": 4,
+      "dtype": "float32",
+      "endian": "big",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "confirmed",
+      "ambiguous": false,
+      "rejected_candidates": [],
+      "evidence": [
+        {
+          "set": "set07",
+          "before": "2.0",
+          "after": "2.5"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "auto_purge_enable",
+      "unit": "TRACK",
+      "offset": 37408,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "deprecated",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 37408,
+          "size": 2,
+          "dtype": "int16",
+          "endian": "little"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set08",
+          "before": "0",
+          "after": "1"
+        },
+        {
+          "set": "set24",
+          "before": "1",
+          "after": "0"
+        }
+      ],
+      "superseded_by": "auto_purge_enable",
+      "disputed_reason": "second_observation",
+      "disputed_by": "auto_purge_enable(재검증)",
+      "disputed_at_set": "set24"
+    },
+    {
+      "name": "hotplate_temp",
+      "unit": "BAKE",
+      "offset": 42008,
+      "size": 4,
+      "dtype": "float32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "confirmed",
+      "ambiguous": false,
+      "rejected_candidates": [],
+      "evidence": [
+        {
+          "set": "set09",
+          "before": "110.0",
+          "after": "115.0"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "scan_speed",
+      "unit": "SCAN",
+      "offset": 46598,
+      "size": 2,
+      "dtype": "int16",
+      "endian": "big",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "confirmed",
+      "ambiguous": false,
+      "rejected_candidates": [],
+      "evidence": [
+        {
+          "set": "set10",
+          "before": "200",
+          "after": "240"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "rf_power",
+      "unit": "ETCH",
+      "offset": 51200,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "deprecated",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 51200,
+          "size": 8,
+          "dtype": "int64",
+          "endian": "little"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set11",
+          "before": "1000000",
+          "after": "2000000"
+        },
+        {
+          "set": "set25",
+          "before": "3000000000",
+          "after": "4000000000"
+        }
+      ],
+      "superseded_by": "rf_power",
+      "disputed_reason": "second_observation",
+      "disputed_by": "rf_power(재검증)",
+      "disputed_at_set": "set25"
+    },
+    {
+      "name": "gas_flow",
+      "unit": "ETCH",
+      "offset": 55556,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "big",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "deprecated",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 55552,
+          "size": 8,
+          "dtype": "int64",
+          "endian": "big"
+        },
+        {
+          "offset": 55558,
+          "size": 2,
+          "dtype": "int16",
+          "endian": "big"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set12",
+          "before": "500",
+          "after": "750"
+        },
+        {
+          "set": "set26",
+          "before": "3000000000",
+          "after": "4000000000"
+        }
+      ],
+      "superseded_by": "gas_flow",
+      "disputed_reason": "second_observation",
+      "disputed_by": "gas_flow(재검증)",
+      "disputed_at_set": "set26"
+    },
+    {
+      "name": "pad_pressure",
+      "unit": "CMP",
+      "offset": 59904,
+      "size": 8,
+      "dtype": "float64",
+      "endian": "big",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "confirmed",
+      "ambiguous": false,
+      "rejected_candidates": [],
+      "evidence": [
+        {
+          "set": "set13",
+          "before": "3.14",
+          "after": "6.28"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "polish_end_ts",
+      "unit": "CMP",
+      "offset": 64256,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "big",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "deprecated",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 64256,
+          "size": 4,
+          "dtype": "timestamp",
+          "endian": "big"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set14",
+          "before": "1735689600",
+          "after": "1767225600"
+        },
+        {
+          "set": "set27",
+          "before": "1700000000",
+          "after": "1750000000"
+        }
+      ],
+      "superseded_by": "polish_end_ts",
+      "disputed_reason": "second_observation",
+      "disputed_by": "polish_end_ts(재검증)",
+      "disputed_at_set": "set27"
+    },
+    {
+      "name": "dose_rate",
+      "unit": "IMPL",
+      "offset": 68608,
+      "size": 4,
+      "dtype": "float32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "confirmed",
+      "ambiguous": false,
+      "rejected_candidates": [],
+      "evidence": [
+        {
+          "set": "set15",
+          "before": "1.5",
+          "after": "3.0"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "beam_current",
+      "unit": "IMPL",
+      "offset": 73728,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "deprecated",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 73728,
+          "size": 2,
+          "dtype": "int16",
+          "endian": "little"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set16",
+          "before": "12",
+          "after": "18"
+        },
+        {
+          "set": "set28",
+          "before": "20000",
+          "after": "30000"
+        }
+      ],
+      "superseded_by": "beam_current",
+      "disputed_reason": "second_observation",
+      "disputed_by": "beam_current(재검증)",
+      "disputed_at_set": "set28"
+    },
+    {
+      "name": "furnace_pressure",
+      "unit": "DIFF",
+      "offset": 81920,
+      "size": 8,
+      "dtype": "float64",
+      "endian": "big",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "confirmed",
+      "ambiguous": false,
+      "rejected_candidates": [],
+      "evidence": [
+        {
+          "set": "set17",
+          "before": "0.85",
+          "after": "1.2"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "anneal_ts",
+      "unit": "DIFF",
+      "offset": 90112,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "deprecated",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 90112,
+          "size": 4,
+          "dtype": "timestamp",
+          "endian": "little"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set18",
+          "before": "1735689600",
+          "after": "1767225600"
+        },
+        {
+          "set": "set29",
+          "before": "1700000000",
+          "after": "1750000000"
+        }
+      ],
+      "superseded_by": "anneal_ts",
+      "disputed_reason": "second_observation",
+      "disputed_by": "anneal_ts(재검증)",
+      "disputed_at_set": "set29"
+    },
+    {
+      "name": "film_thickness_count",
+      "unit": "METRO",
+      "offset": 98308,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "big",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "deprecated",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 98304,
+          "size": 8,
+          "dtype": "int64",
+          "endian": "big"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set19",
+          "before": "300000",
+          "after": "450000"
+        },
+        {
+          "set": "set30",
+          "before": "3000000000",
+          "after": "4000000000"
+        }
+      ],
+      "superseded_by": "film_thickness_count",
+      "disputed_reason": "second_observation",
+      "disputed_by": "film_thickness_count(재검증)",
+      "disputed_at_set": "set30"
+    },
+    {
+      "name": "overlay_shift",
+      "unit": "METRO",
+      "offset": 106496,
+      "size": 4,
+      "dtype": "float32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "confirmed",
+      "ambiguous": false,
+      "rejected_candidates": [],
+      "evidence": [
+        {
+          "set": "set20",
+          "before": "0.02",
+          "after": "0.05"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "bake_time",
+      "unit": "BAKE",
+      "offset": 9280,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "confirmed",
+      "ambiguous": false,
+      "rejected_candidates": [],
+      "evidence": [
+        {
+          "set": "set02",
+          "before": "60",
+          "after": "90"
+        },
+        {
+          "set": "set21",
+          "before": "45000",
+          "after": "60000"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "spin_rpm",
+      "unit": "COT",
+      "offset": 14528,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "big",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "confirmed",
+      "ambiguous": false,
+      "rejected_candidates": [],
+      "evidence": [
+        {
+          "set": "set03",
+          "before": "1500",
+          "after": "1800"
+        },
+        {
+          "set": "set22",
+          "before": "40000",
+          "after": "50000"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "recipe_ts",
+      "unit": "TRACK",
+      "offset": 23568,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 23568,
+          "size": 4,
+          "dtype": "timestamp",
+          "endian": "little"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set05",
+          "before": "1735689600",
+          "after": "1767225600"
+        },
+        {
+          "set": "set23",
+          "before": "1700000000",
+          "after": "1750000000"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "auto_purge_enable",
+      "unit": "TRACK",
+      "offset": 37408,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 37408,
+          "size": 2,
+          "dtype": "int16",
+          "endian": "little"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set08",
+          "before": "0",
+          "after": "1"
+        },
+        {
+          "set": "set24",
+          "before": "1",
+          "after": "0"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "rf_power",
+      "unit": "ETCH",
+      "offset": 51200,
+      "size": 8,
+      "dtype": "int64",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "confirmed",
+      "ambiguous": false,
+      "rejected_candidates": [],
+      "evidence": [
+        {
+          "set": "set11",
+          "before": "1000000",
+          "after": "2000000"
+        },
+        {
+          "set": "set25",
+          "before": "3000000000",
+          "after": "4000000000"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "gas_flow",
+      "unit": "ETCH",
+      "offset": 55552,
+      "size": 8,
+      "dtype": "int64",
+      "endian": "big",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "confirmed",
+      "ambiguous": false,
+      "rejected_candidates": [],
+      "evidence": [
+        {
+          "set": "set12",
+          "before": "500",
+          "after": "750"
+        },
+        {
+          "set": "set26",
+          "before": "3000000000",
+          "after": "4000000000"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "polish_end_ts",
+      "unit": "CMP",
+      "offset": 64256,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "big",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 64256,
+          "size": 4,
+          "dtype": "timestamp",
+          "endian": "big"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set14",
+          "before": "1735689600",
+          "after": "1767225600"
+        },
+        {
+          "set": "set27",
+          "before": "1700000000",
+          "after": "1750000000"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "beam_current",
+      "unit": "IMPL",
+      "offset": 73728,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 73728,
+          "size": 2,
+          "dtype": "int16",
+          "endian": "little"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set16",
+          "before": "12",
+          "after": "18"
+        },
+        {
+          "set": "set28",
+          "before": "20000",
+          "after": "30000"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "anneal_ts",
+      "unit": "DIFF",
+      "offset": 90112,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 90112,
+          "size": 4,
+          "dtype": "timestamp",
+          "endian": "little"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set18",
+          "before": "1735689600",
+          "after": "1767225600"
+        },
+        {
+          "set": "set29",
+          "before": "1700000000",
+          "after": "1750000000"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "film_thickness_count",
+      "unit": "METRO",
+      "offset": 98304,
+      "size": 8,
+      "dtype": "int64",
+      "endian": "big",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "confirmed",
+      "ambiguous": false,
+      "rejected_candidates": [],
+      "evidence": [
+        {
+          "set": "set19",
+          "before": "300000",
+          "after": "450000"
+        },
+        {
+          "set": "set30",
+          "before": "3000000000",
+          "after": "4000000000"
+        }
+      ],
+      "superseded_by": null
+    }
+  ]
+}

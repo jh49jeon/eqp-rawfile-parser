@@ -1,0 +1,5 @@
+set: set50
+unit: CMP
+name: removal_rate
+before: "450.0"
+after: "512.75"

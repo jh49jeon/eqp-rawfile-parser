@@ -1,5 +1,5 @@
 set: set06
-unit: COT
-name: exhaust_flow
-before: "12.75"
-after: "14.5"
+unit: IMPL
+name: dose_level
+before: "1200000"
+after: "1500000"

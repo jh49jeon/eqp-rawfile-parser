@@ -1,0 +1,10 @@
+{
+  "name": "eqp-rawfile-parser",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "lint": "node tools/lint.mjs",
+    "typecheck": "node tools/check_types.mjs",
+    "build": "node tools/backlog.mjs validate"
+  }
+}

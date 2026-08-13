@@ -1,0 +1,5 @@
+set: set57
+unit: DIFF
+name: gas_ratio
+before: "0.65"
+after: "0.72"

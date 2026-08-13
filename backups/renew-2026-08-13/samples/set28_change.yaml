@@ -1,0 +1,5 @@
+set: set28
+unit: IMPL
+name: beam_current
+before: "20000"
+after: "30000"

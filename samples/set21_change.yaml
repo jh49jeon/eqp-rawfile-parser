@@ -1,0 +1,5 @@
+set: set21
+unit: COT
+name: nozzle_temp
+before: "42.0"
+after: "45.5"

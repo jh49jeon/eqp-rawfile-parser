@@ -1,0 +1,5 @@
+set: set09
+unit: BAKE
+name: hotplate_temp
+before: "110.0"
+after: "115.0"

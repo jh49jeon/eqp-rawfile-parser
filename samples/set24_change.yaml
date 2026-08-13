@@ -1,0 +1,5 @@
+set: set24
+unit: ETCH
+name: chamber_pressure
+before: "12.75"
+after: "13.10"

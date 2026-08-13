@@ -1,0 +1,5 @@
+set: set30
+unit: DEV
+name: rinse_time
+before: "30"
+after: "40"

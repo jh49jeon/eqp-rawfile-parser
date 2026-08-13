@@ -1,5 +1,5 @@
 set: set10
-unit: SCAN
-name: scan_speed
-before: "200"
-after: "240"
+unit: DEV
+name: dev_time
+before: "60"
+after: "75"

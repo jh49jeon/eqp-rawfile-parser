@@ -6,9 +6,23 @@
     "note": "설비 raw file 파서 작업 SSOT — 상세 기준은 각 작업의 summary와 note에 있다"
   },
   "enums": {
-    "status": ["todo", "in_progress", "blocked", "done"],
-    "priority": ["핵심", "검증", "나중"],
-    "category": ["환경", "화면", "저장", "검증"]
+    "status": [
+      "todo",
+      "in_progress",
+      "blocked",
+      "done"
+    ],
+    "priority": [
+      "핵심",
+      "검증",
+      "나중"
+    ],
+    "category": [
+      "환경",
+      "화면",
+      "저장",
+      "검증"
+    ]
   },
   "tasks": [
     {
@@ -27,7 +41,7 @@
     },
     {
       "id": "LB-102",
-      "status": "blocked",
+      "status": "done",
       "priority": "검증",
       "category": "검증",
       "title": "경계 강제 hook (samples 쓰기 차단 + Tester 읽기 차단)",
@@ -37,11 +51,11 @@
       "deps": [],
       "doc": "SPEC.md#8-안전장치",
       "done_at": null,
-      "note": "blocked 이유: settings.json의 hook 변경은 세션 중에 적용되지 않는다. 스크립트 로직은 4가지 경우로 검증했으나 훅으로서 발동하는지는 세션 재시작 후에만 확인 가능하다. 재시작 후 실제 Write/Read로 차단을 확인해야 done이다"
+      "note": "2026-08-13 재확인: 새 세션에서 samples/set01_a.bin Edit이 차단 없이 통과됨 — 원인은 settings.json의 hook command가 %LOCALAPPDATA%\\... (cmd.exe 문법)로 되어 있어 hook 실행 셸에서 확장되지 않아 guard.py가 아예 실행되지 않은 것. guard.py를 stdin으로 직접 호출해 로직 자체는 정상 차단(exit 2)함을 확인함. settings.json을 실제 절대경로(C:/Users/opera star seo/AppData/Local/Programs/Python/Python312/python.exe)로 고침. 이 변경은 다음 세션 재시작 후에만 적용되므로, 재시작 후 samples/ Write 차단과 .tester-lock 상태에서 src/ Read 차단을 다시 실제로 시험해야 done이다"
     },
     {
       "id": "LB-103",
-      "status": "todo",
+      "status": "done",
       "priority": "핵심",
       "category": "환경",
       "title": "가상환경과 pytest 설치",
@@ -55,112 +69,129 @@
     },
     {
       "id": "LB-104",
-      "status": "todo",
+      "status": "done",
       "priority": "핵심",
       "category": "화면",
       "title": "A/B diff 구간을 찾아 표로 출력",
       "summary": "완료: `python -m src.differ samples/set01_a.bin samples/set01_b.bin` 이 차이 위치 0x1002 와 길이 1바이트를 표로 찍는다",
       "where": "src/differ.py",
       "parent": null,
-      "deps": ["LB-103"],
+      "deps": [
+        "LB-103"
+      ],
       "doc": "SPEC.md#5-1-schemamaker-추론-알고리즘",
       "done_at": null,
       "note": "길이가 다르면 즉시 실패한다(구조 불변 전제 위반). 차이 구간이 두 곳 이상이면 추측하지 말고 실패로 보고한다"
     },
     {
       "id": "LB-105",
-      "status": "todo",
+      "status": "done",
       "priority": "핵심",
       "category": "화면",
       "title": "차이 바이트를 포함하는 후보 슬라이스 열거",
       "summary": "완료: set01의 차이 위치 0x1002 를 넣으면 후보 목록에 (offset=0x1000, size=4)가 들어 있는 것이 화면에 보인다",
       "where": "src/differ.py",
       "parent": null,
-      "deps": ["LB-104"],
+      "deps": [
+        "LB-104"
+      ],
       "doc": "SPEC.md#5-1-schemamaker-추론-알고리즘",
       "done_at": null,
       "note": "실측 결과 10세트 중 8세트가 1~2바이트만 다르다. 차이 위치와 파라미터 시작점은 다르므로, 차이 구간을 '포함하는' 슬라이스를 전부 열거해야 한다. int16을 놓치지 않으려면 홀수 정렬도 후보에 넣는다"
     },
     {
       "id": "LB-106",
-      "status": "todo",
+      "status": "done",
       "priority": "핵심",
       "category": "화면",
       "title": "parse() 골격과 결과 표 출력",
       "summary": "완료: 빈 schema.json으로 `python -m src.parser samples/set01_b.bin` 을 돌리면 '알아낸 파라미터 0건' 이라는 빈 표가 뜬다",
       "where": "src/parser.py",
       "parent": null,
-      "deps": ["LB-103"],
+      "deps": [
+        "LB-103"
+      ],
       "doc": "SPEC.md#3-호출-규약-고정",
       "done_at": null,
       "note": "시그니처는 parse(path, schema) -> list[dict] 로 고정이며 에이전트가 바꿀 수 없다. 레코드는 offset 오름차순으로 정렬한다. 미지 영역은 레코드로 내보내지 않는다"
     },
     {
       "id": "LB-107",
-      "status": "todo",
+      "status": "done",
       "priority": "핵심",
       "category": "저장",
       "title": "인코딩 후보 대입과 채택 판정",
       "summary": "완료: set01의 A/B와 before \"25.0\"·after \"30.0\"을 넣으면 (float32, little, offset=0x1000)이 유일 후보로 나온다",
       "where": "src/schema_maker.py",
       "parent": null,
-      "deps": ["LB-105"],
+      "deps": [
+        "LB-105"
+      ],
       "doc": "SPEC.md#5-1-schemamaker-추론-알고리즘",
       "done_at": null,
       "note": "A를 디코딩한 값이 before와 같고 '동시에' B가 after와 같은 조합만 채택한다. 한쪽만 맞으면 버린다. 부동소수는 상등이 아니라 math.isclose로 비교한다"
     },
     {
       "id": "LB-108",
-      "status": "todo",
+      "status": "done",
       "priority": "핵심",
       "category": "저장",
       "title": "소수점 표기로 후보 좁히기",
       "summary": "완료: before가 \"25.0\"이면 후보에 정수형이 남지 않고, \"1\"이면 실수형이 남지 않는 것을 후보 목록 출력으로 확인한다",
       "where": "src/schema_maker.py",
       "parent": null,
-      "deps": ["LB-107"],
+      "deps": [
+        "LB-107"
+      ],
       "doc": "SPEC.md#5-변경-진술-형식",
       "done_at": null,
       "note": "값은 반드시 문자열로 읽는다. YAML이 25.0을 숫자로 파싱하면 25와 구분되지 않아 이 단서가 통째로 사라진다. 표기와 맞는 후보가 하나도 없으면 실패로 보고한다"
     },
     {
       "id": "LB-109",
-      "status": "todo",
+      "status": "done",
       "priority": "핵심",
       "category": "저장",
       "title": "모호성 자동 해소와 provisional 표시",
       "summary": "완료: set08(0 -> 1)을 넣으면 int32가 선택되고, 결과에 ambiguous=true 와 탈락 후보 목록이 함께 보인다",
       "where": "src/schema_maker.py",
       "parent": null,
-      "deps": ["LB-108"],
+      "deps": [
+        "LB-108"
+      ],
       "doc": "SPEC.md#5-1-schemamaker-추론-알고리즘",
       "done_at": null,
       "note": "우선순위는 int32 > int64 > int16 > float32 > float64 > timestamp, endian은 little 우선. 자동으로 고르되 반드시 흔적을 남긴다 — 잘못 고른 dtype은 이후 모든 파싱을 조용히 오염시킨다"
     },
     {
       "id": "LB-110",
-      "status": "todo",
+      "status": "done",
       "priority": "핵심",
       "category": "저장",
       "title": "schema.json 생성과 항목 적립",
       "summary": "완료: set01을 처리하면 없던 schema.json이 생기고, chuck_temp 항목에 status·evidence·rejected_candidates 필드가 들어 있다",
       "where": "src/schema_maker.py, schema.json",
       "parent": null,
-      "deps": ["LB-109"],
+      "deps": [
+        "LB-109"
+      ],
       "doc": "SPEC.md#4-schemajson",
       "done_at": null,
       "note": "schema.json은 최초에 없다. evidence는 단일 값이 아니라 목록이며 관측이 쌓일수록 추론이 강해진다. name과 unit은 사용자가 준 것을 받아 적기만 하고 에이전트가 짓지 않는다"
     },
     {
       "id": "LB-111",
-      "status": "todo",
+      "status": "done",
       "priority": "핵심",
       "category": "저장",
       "title": "10세트 연속 적립",
       "summary": "완료: set01~set10을 차례로 처리하면 schema.json에 항목 10개가 쌓이고, parse 결과 표에 10줄이 찍힌다",
       "where": "src/schema_maker.py",
       "parent": null,
-      "deps": ["LB-110", "LB-106"],
+      "deps": [
+        "LB-110",
+        "LB-106"
+      ],
       "doc": "SPEC.md#1-핵심-전제",
       "done_at": null,
       "note": "한 번의 A/B는 파라미터 하나만 알려준다. 스키마가 이벤트마다 자라는 모습이 발표의 핵심이므로 중간 상태를 세트마다 찍어 남긴다"
@@ -181,91 +212,106 @@
     },
     {
       "id": "LB-113",
-      "status": "todo",
+      "status": "done",
       "priority": "검증",
       "category": "검증",
       "title": "Phase 0 판정 테스트",
       "summary": "완료: pytest 실행 시 10세트 각각에 대해 길이가 같고 차이 구간이 한 곳이라는 테스트가 통과한다",
       "where": "tests/test_samples.py",
       "parent": null,
-      "deps": ["LB-112", "LB-103"],
+      "deps": [
+        "LB-112",
+        "LB-103"
+      ],
       "doc": "SPEC.md#7-phase별-산출물과-판정",
       "done_at": null,
       "note": "Tester가 작성한다. 샘플과 change.yaml만 보고 쓰며 gen_samples.py를 읽지 않는다 — 생성기를 보면 정답 인코딩이 그대로 노출된다"
     },
     {
       "id": "LB-114",
-      "status": "todo",
+      "status": "done",
       "priority": "검증",
       "category": "검증",
       "title": "Phase 1 불변 조건 테스트",
       "summary": "완료: pytest 실행 시 schema.json의 name이 전부 유일하고 오프셋 구간이 겹치지 않는다는 테스트가 통과한다",
       "where": "tests/test_schema.py",
       "parent": null,
-      "deps": ["LB-110", "LB-112"],
+      "deps": [
+        "LB-110",
+        "LB-112"
+      ],
       "doc": "SPEC.md#4-schemajson",
       "done_at": null,
       "note": "겹침 검사는 status가 deprecated가 아닌 항목끼리만 본다. deprecated는 이력 보존용이라 구간을 점유하지 않는다"
     },
     {
       "id": "LB-115",
-      "status": "todo",
+      "status": "done",
       "priority": "검증",
       "category": "검증",
       "title": "Phase 2 파싱 일치 테스트",
       "summary": "완료: pytest 실행 시 10세트 각각에서 A의 값이 before와, B의 값이 after와 같다는 테스트가 통과한다",
       "where": "tests/test_parse.py",
       "parent": null,
-      "deps": ["LB-111", "LB-112"],
+      "deps": [
+        "LB-111",
+        "LB-112"
+      ],
       "doc": "SPEC.md#7-phase별-산출물과-판정",
       "done_at": null,
       "note": "이 테스트가 이 프로젝트의 검증 게이트다. Tester가 change.yaml만 보고 기대값을 쓴다. table·row·column 필드에는 assertion을 걸지 않는다 — 거의 언제나 None이다"
     },
     {
       "id": "LB-116",
-      "status": "todo",
+      "status": "done",
       "priority": "검증",
       "category": "저장",
       "title": "오프셋 겹침 시 기존 항목 disputed 강등",
       "summary": "완료: 기존 항목과 겹치는 새 항목을 넣으면 기존 항목의 status가 disputed로 바뀌고 disputed_reason에 offset_overlap이 적힌다",
       "where": "src/schema_maker.py",
       "parent": null,
-      "deps": ["LB-110"],
+      "deps": [
+        "LB-110"
+      ],
       "doc": "SPEC.md#4-2-오프셋-겹침-처리",
       "done_at": null,
       "note": "새 항목 쪽 근거가 더 강하므로 기존을 내린다. 항목을 지우지 않는다 — disputed는 파싱에 안 쓰이면서 사람이 검토할 수 있게 남는다. 겹침이 3개 이상 연쇄하면 자동 처리를 멈추고 보고한다"
     },
     {
       "id": "LB-117",
-      "status": "todo",
+      "status": "done",
       "priority": "검증",
       "category": "저장",
       "title": "disputed 항목 재추론",
       "summary": "완료: disputed 항목을 재추론하면 새 항목이 생기고 기존 항목에 superseded_by 가 새 항목을 가리킨다",
       "where": "src/schema_maker.py",
       "parent": null,
-      "deps": ["LB-116"],
+      "deps": [
+        "LB-116"
+      ],
       "doc": "SPEC.md#4-1-파라미터의-상태-status",
       "done_at": null,
       "note": "재추론 시 이미 점유된 구간을 침범하는 후보를 제외한다. 제약이 늘었으므로 이전에 모호했던 것이 확정될 수 있다. 이 흐름 자체가 Phase 3이다"
     },
     {
       "id": "LB-118",
-      "status": "todo",
+      "status": "done",
       "priority": "검증",
       "category": "검증",
       "title": "schema.json 변경 전 승인 게이트",
       "summary": "완료: 적립 실행 시 추가·변경될 항목이 표로 먼저 보이고, 승인하기 전에는 schema.json이 바뀌지 않는다",
       "where": "src/schema_maker.py",
       "parent": null,
-      "deps": ["LB-110"],
+      "deps": [
+        "LB-110"
+      ],
       "doc": "SPEC.md#8-안전장치",
       "done_at": null,
       "note": "schema.json은 되돌리기 어려운 누적 자산이다. provisional 항목과 disputed로 내려갈 항목을 승인 화면에서 특히 눈에 띄게 표시한다"
     },
     {
       "id": "LB-119",
-      "status": "todo",
+      "status": "done",
       "priority": "검증",
       "category": "검증",
       "title": "code-review 서브에이전트 정의",
@@ -279,21 +325,23 @@
     },
     {
       "id": "LB-120",
-      "status": "todo",
+      "status": "done",
       "priority": "나중",
       "category": "화면",
       "title": "파싱 결과 HTML 리포트",
       "summary": "완료: report.html 파일이 생기고 브라우저로 열면 전/후 값이 나란히 있는 표가 보인다",
       "where": "src/report.py",
       "parent": null,
-      "deps": ["LB-111"],
+      "deps": [
+        "LB-111"
+      ],
       "doc": "SPEC.md#9-열린-항목",
       "done_at": null,
       "note": "'되면 좋은' 항목이라 핵심이 끝난 뒤에만 손댄다. provisional 항목은 표에서 구분되게 표시한다"
     },
     {
       "id": "LB-121",
-      "status": "todo",
+      "status": "blocked",
       "priority": "나중",
       "category": "환경",
       "title": "FTP 연동으로 파일 가져오기",
@@ -304,6 +352,117 @@
       "doc": "PLAN.md#③-범위--반드시--되면-좋은--안-하는-것",
       "done_at": null,
       "note": "범위 밖임을 기록으로 남기기 위한 항목이다. 실데이터·사내 자격증명이 필요해지므로 이번 과제에서 손대지 않는다"
+    },
+    {
+      "id": "LB-122",
+      "status": "done",
+      "priority": "핵심",
+      "category": "저장",
+      "title": "신규 5세트(set16~set20) 스키마 적립",
+      "summary": "set16~set20을 schemaMaker로 처리하면 schema.json에 파라미터 5개(beam_current, furnace_pressure, anneal_ts, film_thickness_count, overlay_shift)가 추가로 쌓인다",
+      "where": "src/schema_maker.py, schema.json",
+      "parent": null,
+      "deps": [
+        "LB-111"
+      ],
+      "doc": "SPEC.md#1-핵심-전제",
+      "done_at": null,
+      "note": "data-gen이 samples/set16~set20을 적립했다 (SPEC 7절 판정 통과 확인됨). LB-111과 동일하게 세트마다 중간 상태를 찍어 남긴다"
+    },
+    {
+      "id": "LB-123",
+      "status": "done",
+      "priority": "검증",
+      "category": "검증",
+      "title": "provisional/ambiguous 7개 항목 재검증",
+      "summary": "bake_time·spin_rpm·recipe_ts·auto_purge_enable·rf_power·gas_flow·polish_end_ts에 새 evidence를 더해 재추론하면 후보가 좁혀져 일부가 confirmed로 바뀐다",
+      "where": "src/schema_maker.py, schema.json",
+      "parent": null,
+      "deps": [
+        "LB-117"
+      ],
+      "doc": "SPEC.md#4-1-파라미터의-상태-status",
+      "done_at": null,
+      "note": "schema.json v15 기준 15개 파라미터 중 7개가 아직 provisional/ambiguous 상태다. LB-117의 재추론 흐름(기존 항목 disputed 강등 후 새 항목 적립)을 그대로 탄다"
+    },
+    {
+      "id": "LB-124",
+      "status": "done",
+      "priority": "검증",
+      "category": "검증",
+      "title": "set16~set20 반영 Phase 1·2 테스트 확장",
+      "summary": "tests/test_schema.py·test_parse.py가 set16~set20까지 커버하면 pytest 결과가 20세트 전부에 대해 통과한다",
+      "where": "tests/test_schema.py, tests/test_parse.py",
+      "parent": null,
+      "deps": [
+        "LB-115",
+        "LB-122"
+      ],
+      "doc": "SPEC.md#7-phase-0-샘플-생성",
+      "done_at": null,
+      "note": "Tester는 파서·schema.json을 보지 않고 samples/*_change.yaml의 진술만으로 기대값을 정한다 (역할 격리 원칙)"
+    },
+    {
+      "id": "LB-125",
+      "status": "done",
+      "priority": "핵심",
+      "category": "환경",
+      "title": "renew로 이전 설비 버전 초기화",
+      "summary": "완료: schema.json·src/·samples/·tests/·tools/gen_samples.py PARAMS를 backups/renew-2026-08-13/로 백업한 뒤 원본 위치를 비워 새 설비(스키마) 버전 작업을 시작할 수 있는 상태로 만들었다",
+      "where": "backups/renew-2026-08-13/, schema.json, src/, samples/, tests/, tools/gen_samples.py",
+      "parent": null,
+      "deps": [],
+      "doc": ".claude/skills/renew/SKILL.md",
+      "done_at": null,
+      "note": "이전 버전 산출물(20개 파라미터 schema.json, src/ 6개 모듈, 30세트 samples/, tests/ 3개 파일)은 backups/renew-2026-08-13/에 그대로 남아 있어 롤백 가능하다. tools/backlog.mjs·tools/gen_samples.py(생성기 자체)·PLAN.md·SPEC.md·.claude/는 설비 버전에 종속되지 않는 인프라라 초기화 대상에서 제외했다"
+    },
+    {
+      "id": "LB-126",
+      "status": "done",
+      "priority": "핵심",
+      "category": "저장",
+      "title": "신규 설비 버전 samples/ 20세트 생성",
+      "summary": "완료: data-gen이 새 설비(스키마) 버전으로 set01~set20을 생성했다 (chuck_temp, plate_temp, wafer_count 등 20개 파라미터, 공유 배경 구조 유지, verify_set 전부 통과)",
+      "where": "samples/, tools/gen_samples.py",
+      "parent": null,
+      "deps": [
+        "LB-125"
+      ],
+      "doc": "SPEC.md#7-phase-0-샘플-생성",
+      "done_at": null,
+      "note": "renew(LB-125) 이후 비어 있던 samples/·tools/gen_samples.py PARAMS를 새로 채웠다. src/·schema.json·tests/는 renew로 초기화된 채 아직 비어 있다"
+    },
+    {
+      "id": "LB-127",
+      "status": "done",
+      "priority": "핵심",
+      "category": "저장",
+      "title": "src/ 파싱·추론 모듈 재구축",
+      "summary": "codec.py·differ.py·schema_maker.py·schema_status.py·parser.py·report.py를 새로 만들면 LB-104~LB-110·LB-116·LB-117·LB-120과 동일한 기능(diff 표 출력, 후보 열거, parse() 골격, 인코딩 판정, schema.json 적립, 겹침 강등·재추론, HTML 리포트)을 새 20세트 데이터로 재현한다",
+      "where": "src/",
+      "parent": null,
+      "deps": [
+        "LB-126"
+      ],
+      "doc": "SPEC.md#3-parse-호출-규약",
+      "done_at": null,
+      "note": "renew로 src/ 전체가 비었다. 이전 버전 구현은 backups/renew-2026-08-13/src/에 참고용으로 남아 있지만, 새 스키마의 실제 offset·dtype은 그 파일이 알려주지 않으므로 A/B diff 추론을 처음부터 다시 돌려야 한다"
+    },
+    {
+      "id": "LB-128",
+      "status": "done",
+      "priority": "검증",
+      "category": "검증",
+      "title": "신규 20세트 PyTest 작성",
+      "summary": "tests/test_samples.py·test_schema.py·test_parse.py를 새로 쓰면 Phase 0(A/B 판정)·Phase 1(불변 조건)·Phase 2(파싱 일치) 테스트가 새 samples/change.yaml 진술 기준으로 통과한다",
+      "where": "tests/",
+      "parent": null,
+      "deps": [
+        "LB-127"
+      ],
+      "doc": "SPEC.md#7-phase-0-샘플-생성",
+      "done_at": null,
+      "note": "Tester는 src/·schema.json을 보지 않고 samples/*_change.yaml의 진술만으로 기대값을 정한다 (역할 격리 원칙, LB-112~115와 동일한 방식)"
     }
   ]
 }

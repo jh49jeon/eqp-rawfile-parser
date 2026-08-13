@@ -1,5 +1,5 @@
 set: set09
-unit: BAKE
-name: hotplate_temp
-before: "110.0"
-after: "115.0"
+unit: SCAN
+name: focus_offset
+before: "-120"
+after: "-95"

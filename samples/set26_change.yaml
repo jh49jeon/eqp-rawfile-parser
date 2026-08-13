@@ -1,0 +1,5 @@
+set: set26
+unit: IMPL
+name: beam_current
+before: "800000"
+after: "950000"

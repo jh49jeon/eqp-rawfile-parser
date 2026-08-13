@@ -1,0 +1,5 @@
+set: set19
+unit: SCAN
+name: exposure_dose
+before: "-100"
+after: "-50"

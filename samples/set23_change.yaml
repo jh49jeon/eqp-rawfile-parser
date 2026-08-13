@@ -1,0 +1,5 @@
+set: set23
+unit: TRACK
+name: lot_seq
+before: "1001"
+after: "1002"

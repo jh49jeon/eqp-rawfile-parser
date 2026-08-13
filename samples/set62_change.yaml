@@ -1,0 +1,5 @@
+set: set62
+unit: BAKE
+name: cooldown_rate
+before: "5"
+after: "7"

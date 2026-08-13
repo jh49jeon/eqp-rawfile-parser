@@ -1,0 +1,5 @@
+set: set64
+unit: ETCH
+name: strike_ts
+before: "1703500000"
+after: "1703586400"

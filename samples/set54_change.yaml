@@ -1,0 +1,5 @@
+set: set54
+unit: ETCH
+name: coil_power
+before: "600.25"
+after: "625.75"

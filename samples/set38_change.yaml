@@ -1,0 +1,5 @@
+set: set38
+unit: TRACK
+name: arm_position
+before: "220"
+after: "260"

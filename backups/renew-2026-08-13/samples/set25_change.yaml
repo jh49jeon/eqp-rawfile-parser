@@ -1,0 +1,5 @@
+set: set25
+unit: ETCH
+name: rf_power
+before: "3000000000"
+after: "4000000000"

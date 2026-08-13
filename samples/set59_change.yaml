@@ -1,0 +1,5 @@
+set: set59
+unit: SCAN
+name: grid_offset
+before: "-15"
+after: "-8"

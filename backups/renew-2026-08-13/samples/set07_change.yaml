@@ -1,0 +1,5 @@
+set: set07
+unit: COT
+name: edge_bead_width
+before: "2.0"
+after: "2.5"

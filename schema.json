@@ -1,0 +1,1742 @@
+{
+  "version": 65,
+  "parameters": [
+    {
+      "name": "chuck_temp",
+      "unit": "COT",
+      "offset": 8192,
+      "size": 4,
+      "dtype": "float32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "confirmed",
+      "ambiguous": false,
+      "rejected_candidates": [],
+      "evidence": [
+        {
+          "set": "set01",
+          "before": "25.0",
+          "after": "30.0"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "plate_temp",
+      "unit": "BAKE",
+      "offset": 12288,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 12288,
+          "size": 2,
+          "dtype": "int16",
+          "endian": "little"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set02",
+          "before": "110",
+          "after": "120"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "wafer_count",
+      "unit": "TRACK",
+      "offset": 16384,
+      "size": 2,
+      "dtype": "int16",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 16383,
+          "size": 2,
+          "dtype": "int16",
+          "endian": "big"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set03",
+          "before": "0",
+          "after": "1"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "rf_power",
+      "unit": "ETCH",
+      "offset": 20480,
+      "size": 8,
+      "dtype": "float64",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "confirmed",
+      "ambiguous": false,
+      "rejected_candidates": [],
+      "evidence": [
+        {
+          "set": "set04",
+          "before": "850.5",
+          "after": "900.25"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "run_ts",
+      "unit": "CMP",
+      "offset": 24576,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 24576,
+          "size": 4,
+          "dtype": "timestamp",
+          "endian": "little"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set05",
+          "before": "1700000000",
+          "after": "1700003600"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "dose_level",
+      "unit": "IMPL",
+      "offset": 28672,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 28672,
+          "size": 8,
+          "dtype": "int64",
+          "endian": "little"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set06",
+          "before": "1200000",
+          "after": "1500000"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "furnace_temp",
+      "unit": "DIFF",
+      "offset": 32768,
+      "size": 4,
+      "dtype": "float32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "confirmed",
+      "ambiguous": false,
+      "rejected_candidates": [],
+      "evidence": [
+        {
+          "set": "set07",
+          "before": "950.0",
+          "after": "975.5"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "cd_target",
+      "unit": "METRO",
+      "offset": 36864,
+      "size": 4,
+      "dtype": "float32",
+      "endian": "big",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "confirmed",
+      "ambiguous": false,
+      "rejected_candidates": [],
+      "evidence": [
+        {
+          "set": "set08",
+          "before": "45.2",
+          "after": "44.8"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "focus_offset",
+      "unit": "SCAN",
+      "offset": 40960,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "big",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 40962,
+          "size": 2,
+          "dtype": "int16",
+          "endian": "big"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set09",
+          "before": "-120",
+          "after": "-95"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "dev_time",
+      "unit": "DEV",
+      "offset": 45056,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 45056,
+          "size": 2,
+          "dtype": "int16",
+          "endian": "little"
+        },
+        {
+          "offset": 45055,
+          "size": 2,
+          "dtype": "int16",
+          "endian": "big"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set10",
+          "before": "60",
+          "after": "75"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "spin_speed",
+      "unit": "COT",
+      "offset": 49152,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 49152,
+          "size": 2,
+          "dtype": "int16",
+          "endian": "little"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set11",
+          "before": "2500",
+          "after": "3000"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "cycle_count",
+      "unit": "BAKE",
+      "offset": 53248,
+      "size": 2,
+      "dtype": "int16",
+      "endian": "big",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "confirmed",
+      "ambiguous": false,
+      "rejected_candidates": [],
+      "evidence": [
+        {
+          "set": "set12",
+          "before": "3",
+          "after": "4"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "align_x",
+      "unit": "TRACK",
+      "offset": 57344,
+      "size": 8,
+      "dtype": "float64",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "confirmed",
+      "ambiguous": false,
+      "rejected_candidates": [],
+      "evidence": [
+        {
+          "set": "set13",
+          "before": "0.125",
+          "after": "0.250"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "gas_flow",
+      "unit": "ETCH",
+      "offset": 61440,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 61440,
+          "size": 2,
+          "dtype": "int16",
+          "endian": "little"
+        },
+        {
+          "offset": 61439,
+          "size": 2,
+          "dtype": "int16",
+          "endian": "big"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set14",
+          "before": "150",
+          "after": "180"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "pad_pressure",
+      "unit": "CMP",
+      "offset": 65536,
+      "size": 4,
+      "dtype": "float32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "confirmed",
+      "ambiguous": false,
+      "rejected_candidates": [],
+      "evidence": [
+        {
+          "set": "set15",
+          "before": "3.5",
+          "after": "4.2"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "cal_ts",
+      "unit": "IMPL",
+      "offset": 69632,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "big",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 69632,
+          "size": 4,
+          "dtype": "timestamp",
+          "endian": "big"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set16",
+          "before": "1690000000",
+          "after": "1690086400"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "step_time",
+      "unit": "DIFF",
+      "offset": 73728,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 73728,
+          "size": 8,
+          "dtype": "int64",
+          "endian": "little"
+        },
+        {
+          "offset": 73728,
+          "size": 2,
+          "dtype": "int16",
+          "endian": "little"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set17",
+          "before": "3600",
+          "after": "7200"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "overlay_err",
+      "unit": "METRO",
+      "offset": 77824,
+      "size": 8,
+      "dtype": "float64",
+      "endian": "big",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "confirmed",
+      "ambiguous": false,
+      "rejected_candidates": [],
+      "evidence": [
+        {
+          "set": "set18",
+          "before": "-0.015",
+          "after": "0.008"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "exposure_dose",
+      "unit": "SCAN",
+      "offset": 81920,
+      "size": 2,
+      "dtype": "int16",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "confirmed",
+      "ambiguous": false,
+      "rejected_candidates": [],
+      "evidence": [
+        {
+          "set": "set19",
+          "before": "-100",
+          "after": "-50"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "puddle_time",
+      "unit": "DEV",
+      "offset": 86016,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "big",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 86018,
+          "size": 2,
+          "dtype": "int16",
+          "endian": "big"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set20",
+          "before": "45",
+          "after": "50"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "nozzle_temp",
+      "unit": "COT",
+      "offset": 90112,
+      "size": 4,
+      "dtype": "float32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "confirmed",
+      "ambiguous": false,
+      "rejected_candidates": [],
+      "evidence": [
+        {
+          "set": "set21",
+          "before": "42.0",
+          "after": "45.5"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "hotplate_id",
+      "unit": "BAKE",
+      "offset": 91136,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 91136,
+          "size": 2,
+          "dtype": "int16",
+          "endian": "little"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set22",
+          "before": "2",
+          "after": "3"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "lot_seq",
+      "unit": "TRACK",
+      "offset": 92160,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "big",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 92162,
+          "size": 2,
+          "dtype": "int16",
+          "endian": "big"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set23",
+          "before": "1001",
+          "after": "1002"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "chamber_pressure",
+      "unit": "ETCH",
+      "offset": 93184,
+      "size": 8,
+      "dtype": "float64",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "confirmed",
+      "ambiguous": false,
+      "rejected_candidates": [],
+      "evidence": [
+        {
+          "set": "set24",
+          "before": "12.75",
+          "after": "13.10"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "slurry_ts",
+      "unit": "CMP",
+      "offset": 94208,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 94208,
+          "size": 4,
+          "dtype": "timestamp",
+          "endian": "little"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set25",
+          "before": "1701000000",
+          "after": "1701003600"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "beam_current",
+      "unit": "IMPL",
+      "offset": 95232,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 95232,
+          "size": 8,
+          "dtype": "int64",
+          "endian": "little"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set26",
+          "before": "800000",
+          "after": "950000"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "anneal_temp",
+      "unit": "DIFF",
+      "offset": 96256,
+      "size": 4,
+      "dtype": "float32",
+      "endian": "big",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "confirmed",
+      "ambiguous": false,
+      "rejected_candidates": [],
+      "evidence": [
+        {
+          "set": "set27",
+          "before": "1050.0",
+          "after": "1075.25"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "thickness_target",
+      "unit": "METRO",
+      "offset": 97280,
+      "size": 4,
+      "dtype": "float32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "confirmed",
+      "ambiguous": false,
+      "rejected_candidates": [],
+      "evidence": [
+        {
+          "set": "set28",
+          "before": "12.4",
+          "after": "12.8"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "z_offset",
+      "unit": "SCAN",
+      "offset": 98304,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 98304,
+          "size": 2,
+          "dtype": "int16",
+          "endian": "little"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set29",
+          "before": "-40",
+          "after": "-25"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "rinse_time",
+      "unit": "DEV",
+      "offset": 99326,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "big",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 99328,
+          "size": 2,
+          "dtype": "int16",
+          "endian": "big"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set30",
+          "before": "30",
+          "after": "40"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "ramp_rate",
+      "unit": "COT",
+      "offset": 100352,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 100352,
+          "size": 2,
+          "dtype": "int16",
+          "endian": "little"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set31",
+          "before": "500",
+          "after": "650"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "exhaust_flow",
+      "unit": "BAKE",
+      "offset": 101376,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 101376,
+          "size": 2,
+          "dtype": "int16",
+          "endian": "little"
+        },
+        {
+          "offset": 101375,
+          "size": 2,
+          "dtype": "int16",
+          "endian": "big"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set32",
+          "before": "12",
+          "after": "15"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "align_y",
+      "unit": "TRACK",
+      "offset": 102400,
+      "size": 8,
+      "dtype": "float64",
+      "endian": "big",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "confirmed",
+      "ambiguous": false,
+      "rejected_candidates": [],
+      "evidence": [
+        {
+          "set": "set33",
+          "before": "0.075",
+          "after": "0.150"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "endpoint_ts",
+      "unit": "ETCH",
+      "offset": 103424,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "big",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 103424,
+          "size": 4,
+          "dtype": "timestamp",
+          "endian": "big"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set34",
+          "before": "1701500000",
+          "after": "1701586400"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "downforce",
+      "unit": "CMP",
+      "offset": 104448,
+      "size": 8,
+      "dtype": "float64",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "confirmed",
+      "ambiguous": false,
+      "rejected_candidates": [],
+      "evidence": [
+        {
+          "set": "set35",
+          "before": "5.2",
+          "after": "6.0"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "dispense_volume",
+      "unit": "COT",
+      "offset": 106496,
+      "size": 4,
+      "dtype": "float32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "confirmed",
+      "ambiguous": false,
+      "rejected_candidates": [],
+      "evidence": [
+        {
+          "set": "set36",
+          "before": "1.8",
+          "after": "2.1"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "vac_level",
+      "unit": "BAKE",
+      "offset": 107520,
+      "size": 2,
+      "dtype": "int16",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "confirmed",
+      "ambiguous": false,
+      "rejected_candidates": [],
+      "evidence": [
+        {
+          "set": "set37",
+          "before": "700",
+          "after": "650"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "arm_position",
+      "unit": "TRACK",
+      "offset": 108544,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "big",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 108546,
+          "size": 2,
+          "dtype": "int16",
+          "endian": "big"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set38",
+          "before": "220",
+          "after": "260"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "bias_voltage",
+      "unit": "ETCH",
+      "offset": 109568,
+      "size": 8,
+      "dtype": "float64",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "confirmed",
+      "ambiguous": false,
+      "rejected_candidates": [],
+      "evidence": [
+        {
+          "set": "set39",
+          "before": "-135.5",
+          "after": "-140.25"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "conditioner_ts",
+      "unit": "CMP",
+      "offset": 110592,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 110592,
+          "size": 4,
+          "dtype": "timestamp",
+          "endian": "little"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set40",
+          "before": "1702000000",
+          "after": "1702003600"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "tilt_angle",
+      "unit": "IMPL",
+      "offset": 111616,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 111616,
+          "size": 8,
+          "dtype": "int64",
+          "endian": "little"
+        },
+        {
+          "offset": 111616,
+          "size": 2,
+          "dtype": "int16",
+          "endian": "little"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set41",
+          "before": "7",
+          "after": "15"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "ramp_down_temp",
+      "unit": "DIFF",
+      "offset": 112640,
+      "size": 4,
+      "dtype": "float32",
+      "endian": "big",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "confirmed",
+      "ambiguous": false,
+      "rejected_candidates": [],
+      "evidence": [
+        {
+          "set": "set42",
+          "before": "600.0",
+          "after": "580.5"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "sigma_target",
+      "unit": "METRO",
+      "offset": 113664,
+      "size": 4,
+      "dtype": "float32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "confirmed",
+      "ambiguous": false,
+      "rejected_candidates": [],
+      "evidence": [
+        {
+          "set": "set43",
+          "before": "2.1",
+          "after": "1.8"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "reticle_id",
+      "unit": "SCAN",
+      "offset": 114688,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 114688,
+          "size": 2,
+          "dtype": "int16",
+          "endian": "little"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set44",
+          "before": "305",
+          "after": "306"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "spray_time",
+      "unit": "DEV",
+      "offset": 115710,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "big",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 115713,
+          "size": 2,
+          "dtype": "int16",
+          "endian": "little"
+        },
+        {
+          "offset": 115712,
+          "size": 2,
+          "dtype": "int16",
+          "endian": "big"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set45",
+          "before": "20",
+          "after": "25"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "edge_bead_width",
+      "unit": "COT",
+      "offset": 116736,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 116736,
+          "size": 2,
+          "dtype": "int16",
+          "endian": "little"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set46",
+          "before": "3",
+          "after": "4"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "n2_purge_flow",
+      "unit": "BAKE",
+      "offset": 117760,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 117760,
+          "size": 2,
+          "dtype": "int16",
+          "endian": "little"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set47",
+          "before": "8",
+          "after": "10"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "align_z",
+      "unit": "TRACK",
+      "offset": 118784,
+      "size": 8,
+      "dtype": "float64",
+      "endian": "big",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "confirmed",
+      "ambiguous": false,
+      "rejected_candidates": [],
+      "evidence": [
+        {
+          "set": "set48",
+          "before": "0.045",
+          "after": "0.090"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "endpoint_cal_ts",
+      "unit": "ETCH",
+      "offset": 119808,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "big",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 119808,
+          "size": 4,
+          "dtype": "timestamp",
+          "endian": "big"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set49",
+          "before": "1702500000",
+          "after": "1702586400"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "removal_rate",
+      "unit": "CMP",
+      "offset": 120832,
+      "size": 8,
+      "dtype": "float64",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "confirmed",
+      "ambiguous": false,
+      "rejected_candidates": [],
+      "evidence": [
+        {
+          "set": "set50",
+          "before": "450.0",
+          "after": "512.75"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "prewet_time",
+      "unit": "COT",
+      "offset": 122880,
+      "size": 2,
+      "dtype": "int16",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 122879,
+          "size": 2,
+          "dtype": "int16",
+          "endian": "big"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set51",
+          "before": "5",
+          "after": "8"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "chill_temp",
+      "unit": "BAKE",
+      "offset": 123904,
+      "size": 4,
+      "dtype": "float32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "confirmed",
+      "ambiguous": false,
+      "rejected_candidates": [],
+      "evidence": [
+        {
+          "set": "set52",
+          "before": "23.0",
+          "after": "20.5"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "handoff_delay",
+      "unit": "TRACK",
+      "offset": 124928,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "big",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 124931,
+          "size": 2,
+          "dtype": "int16",
+          "endian": "little"
+        },
+        {
+          "offset": 124930,
+          "size": 2,
+          "dtype": "int16",
+          "endian": "big"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set53",
+          "before": "150",
+          "after": "175"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "coil_power",
+      "unit": "ETCH",
+      "offset": 125952,
+      "size": 8,
+      "dtype": "float64",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "confirmed",
+      "ambiguous": false,
+      "rejected_candidates": [],
+      "evidence": [
+        {
+          "set": "set54",
+          "before": "600.25",
+          "after": "625.75"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "dress_ts",
+      "unit": "CMP",
+      "offset": 126976,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 126976,
+          "size": 4,
+          "dtype": "timestamp",
+          "endian": "little"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set55",
+          "before": "1703000000",
+          "after": "1703003600"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "scan_speed",
+      "unit": "IMPL",
+      "offset": 128000,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 128000,
+          "size": 8,
+          "dtype": "int64",
+          "endian": "little"
+        },
+        {
+          "offset": 128000,
+          "size": 2,
+          "dtype": "int16",
+          "endian": "little"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set56",
+          "before": "2200",
+          "after": "2500"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "gas_ratio",
+      "unit": "DIFF",
+      "offset": 129024,
+      "size": 4,
+      "dtype": "float32",
+      "endian": "big",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "confirmed",
+      "ambiguous": false,
+      "rejected_candidates": [],
+      "evidence": [
+        {
+          "set": "set57",
+          "before": "0.65",
+          "after": "0.72"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "haze_limit",
+      "unit": "METRO",
+      "offset": 130048,
+      "size": 4,
+      "dtype": "float32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "confirmed",
+      "ambiguous": false,
+      "rejected_candidates": [],
+      "evidence": [
+        {
+          "set": "set58",
+          "before": "0.08",
+          "after": "0.06"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "grid_offset",
+      "unit": "SCAN",
+      "offset": 131072,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 131072,
+          "size": 2,
+          "dtype": "int16",
+          "endian": "little"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set59",
+          "before": "-15",
+          "after": "-8"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "purge_time",
+      "unit": "DEV",
+      "offset": 132097,
+      "size": 2,
+      "dtype": "int16",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 132096,
+          "size": 2,
+          "dtype": "int16",
+          "endian": "big"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set60",
+          "before": "10",
+          "after": "14"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "backside_rinse",
+      "unit": "COT",
+      "offset": 133120,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 133120,
+          "size": 2,
+          "dtype": "int16",
+          "endian": "little"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set61",
+          "before": "2",
+          "after": "3"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "cooldown_rate",
+      "unit": "BAKE",
+      "offset": 134144,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 134144,
+          "size": 2,
+          "dtype": "int16",
+          "endian": "little"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set62",
+          "before": "5",
+          "after": "7"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "buffer_slot",
+      "unit": "TRACK",
+      "offset": 135168,
+      "size": 8,
+      "dtype": "float64",
+      "endian": "big",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "confirmed",
+      "ambiguous": false,
+      "rejected_candidates": [],
+      "evidence": [
+        {
+          "set": "set63",
+          "before": "0.020",
+          "after": "0.035"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "strike_ts",
+      "unit": "ETCH",
+      "offset": 136192,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "big",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 136192,
+          "size": 4,
+          "dtype": "timestamp",
+          "endian": "big"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set64",
+          "before": "1703500000",
+          "after": "1703586400"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "polish_uniformity",
+      "unit": "CMP",
+      "offset": 137216,
+      "size": 8,
+      "dtype": "float64",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "confirmed",
+      "ambiguous": false,
+      "rejected_candidates": [],
+      "evidence": [
+        {
+          "set": "set65",
+          "before": "1.15",
+          "after": "0.92"
+        }
+      ],
+      "superseded_by": null
+    }
+  ]
+}

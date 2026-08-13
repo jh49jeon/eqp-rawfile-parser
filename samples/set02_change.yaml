@@ -1,5 +1,5 @@
 set: set02
 unit: BAKE
-name: bake_time
-before: "60"
-after: "90"
+name: plate_temp
+before: "110"
+after: "120"

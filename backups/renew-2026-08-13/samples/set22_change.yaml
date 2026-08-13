@@ -1,0 +1,5 @@
+set: set22
+unit: COT
+name: spin_rpm
+before: "40000"
+after: "50000"

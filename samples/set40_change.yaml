@@ -1,0 +1,5 @@
+set: set40
+unit: CMP
+name: conditioner_ts
+before: "1702000000"
+after: "1702003600"

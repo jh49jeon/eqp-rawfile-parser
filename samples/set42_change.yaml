@@ -1,0 +1,5 @@
+set: set42
+unit: DIFF
+name: ramp_down_temp
+before: "600.0"
+after: "580.5"

@@ -1,0 +1,5 @@
+set: set65
+unit: CMP
+name: polish_uniformity
+before: "1.15"
+after: "0.92"

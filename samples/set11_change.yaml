@@ -1,0 +1,5 @@
+set: set11
+unit: COT
+name: spin_speed
+before: "2500"
+after: "3000"

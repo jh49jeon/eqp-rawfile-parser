@@ -1,0 +1,5 @@
+set: set10
+unit: SCAN
+name: scan_speed
+before: "200"
+after: "240"

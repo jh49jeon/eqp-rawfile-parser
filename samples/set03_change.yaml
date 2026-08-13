@@ -1,5 +1,5 @@
 set: set03
-unit: COT
-name: spin_rpm
-before: "1500"
-after: "1800"
+unit: TRACK
+name: wafer_count
+before: "0"
+after: "1"

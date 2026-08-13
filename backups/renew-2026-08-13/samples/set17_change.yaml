@@ -1,0 +1,5 @@
+set: set17
+unit: DIFF
+name: furnace_pressure
+before: "0.85"
+after: "1.2"

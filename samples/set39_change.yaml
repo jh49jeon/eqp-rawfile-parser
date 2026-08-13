@@ -1,0 +1,5 @@
+set: set39
+unit: ETCH
+name: bias_voltage
+before: "-135.5"
+after: "-140.25"

@@ -1,0 +1,5 @@
+set: set15
+unit: IMPL
+name: dose_rate
+before: "1.5"
+after: "3.0"

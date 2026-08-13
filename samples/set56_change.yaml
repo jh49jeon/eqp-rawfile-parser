@@ -1,0 +1,5 @@
+set: set56
+unit: IMPL
+name: scan_speed
+before: "2200"
+after: "2500"

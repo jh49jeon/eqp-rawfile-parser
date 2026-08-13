@@ -4,6 +4,11 @@
 설비 recipe 바이너리를 흉내 낸다. 각 세트는 파라미터 하나만 값이 다른
 A/B 한 쌍이고, 나머지 바이트는 완전히 동일하다.
 
+모든 세트는 같은 설비·같은 스키마의 파일이라는 전제 하에, 배경(diff 대상이 아닌
+영역)을 하나만 만들어 모든 세트가 공유한다 — 그래야 여러 세트를 적립해 만든
+schema.json으로 아무 파일이나 하나 파싱해도 나머지 필드가 세트마다 제각각인
+난수가 아니라 같은 레시피의 일관된 값으로 보인다.
+
 설계상 지켜야 하는 것 세 가지 (SPEC 7절):
 
 1. 배경을 0으로 채우지 않는다. 0으로 채우면 변경 구간이 유일한 비영 영역이
@@ -22,8 +27,9 @@ import argparse
 import random
 import struct
 import sys
-from dataclasses import dataclass
 from pathlib import Path
+
+from sample_params import PARAMS, Param
 
 FILE_SIZE = 256 * 1024
 SEED = 20260813
@@ -31,35 +37,6 @@ SAMPLES_DIR = Path(__file__).resolve().parent.parent / "samples"
 
 # 값이 놓이는 구간. 앞쪽 1KB는 헤더처럼 두고 건드리지 않는다.
 PARAM_REGION = (0x0400, FILE_SIZE - 0x0400)
-
-
-@dataclass(frozen=True)
-class Param:
-    """한 세트에서 변경할 파라미터. dtype/endian은 정답이며 샘플 밖으로 새지 않는다."""
-
-    set_id: str
-    unit: str
-    name: str
-    dtype: str
-    endian: str
-    before: str  # CIM 화면에 보이는 표기 그대로
-    after: str
-    offset: int
-
-
-# dtype이 골고루 섞이도록 배정한다. set08은 0 -> 1 로 모호성 규칙을 시험한다.
-PARAMS: list[Param] = [
-    Param("set01", "COT", "chuck_temp", "float32", "little", "25.0", "30.0", 0x1000),
-    Param("set02", "BAKE", "bake_time", "int32", "little", "60", "90", 0x2440),
-    Param("set03", "COT", "spin_rpm", "int32", "big", "1500", "1800", 0x38C0),
-    Param("set04", "DEV", "nozzle_id", "int16", "little", "3", "5", 0x4A02),
-    Param("set05", "TRACK", "recipe_ts", "timestamp", "little", "1735689600", "1767225600", 0x5C10),
-    Param("set06", "COT", "exhaust_flow", "float64", "little", "12.75", "14.5", 0x6E08),
-    Param("set07", "COT", "edge_bead_width", "float32", "big", "2.0", "2.5", 0x8004),
-    Param("set08", "TRACK", "auto_purge_enable", "int32", "little", "0", "1", 0x9220),
-    Param("set09", "BAKE", "hotplate_temp", "float32", "little", "110.0", "115.0", 0xA418),
-    Param("set10", "SCAN", "scan_speed", "int16", "big", "200", "240", 0xB606),
-]
 
 _FORMATS = {
     ("int16", "little"): "<h",
@@ -84,8 +61,23 @@ def encode(value: str, dtype: str, endian: str) -> bytes:
     return struct.pack(fmt, number)
 
 
-def build_background(rng: random.Random) -> bytearray:
-    """그럴듯한 recipe 데이터를 흉내 낸 배경. A와 B가 공유한다."""
+def build_shared_background() -> bytes:
+    """모든 세트가 공유하는 단 하나의 배경. 같은 설비의 같은 스키마를 흉내 낸다.
+
+    세트마다 배경을 따로 만들면, 한 세트에서 안 바뀐 자리(=다른 세트의 실제
+    파라미터 값)가 세트마다 제각각인 난수가 되어버린다. 배경을 SEED 하나로 한 번만
+    만들어 모든 세트가 그대로 복사해 쓰면 그 문제는 없어지지만, 그것만으로는
+    부족하다 — PARAM_REGION 전체를 dtype에 무관한 4바이트 난수로 채우면, 실제
+    파라미터가 있는 자리라도 그 파라미터의 진짜 dtype(예: float64 8바이트)으로
+    디코딩했을 때 여전히 nan이나 1e+158 같은 무의미한 값이 나온다.
+
+    그래서 여기서는 두 단계로 만든다: 먼저 아는 파라미터가 없는 자리는 dtype에
+    무관한 잡값으로 채우고, 그다음 PARAMS에 있는 모든 파라미터의 자리에는 그
+    파라미터의 실제 dtype·endian으로 인코딩한 before 값을 심는다. 그래야 어느
+    세트의 파일을 파싱하든, 그 세트에서 다루지 않은 나머지 파라미터도 "같은
+    레시피의 그 필드가 원래 갖고 있던 그럴듯한 값"으로 보인다.
+    """
+    rng = random.Random(SEED)
     buf = bytearray(FILE_SIZE)
 
     # 헤더 비슷한 앞부분 — 매직과 버전, 나머지는 잡값.
@@ -95,6 +87,7 @@ def build_background(rng: random.Random) -> bytearray:
         buf[i] = rng.randrange(256)
 
     # 파라미터 영역: int32 / float32 / timestamp 를 섞어 4바이트 단위로 채운다.
+    # (아래에서 실제 파라미터 자리는 진짜 dtype 값으로 덮어써진다.)
     for off in range(PARAM_REGION[0], PARAM_REGION[1], 4):
         kind = rng.random()
         if kind < 0.45:
@@ -108,14 +101,25 @@ def build_background(rng: random.Random) -> bytearray:
     for i in range(PARAM_REGION[1], FILE_SIZE):
         buf[i] = rng.randrange(256)
 
-    return buf
+    # 모든 파라미터의 자리를 진짜 dtype으로 인코딩한 before 값으로 채운다 —
+    # 이 세트가 아닌 다른 세트의 파일에서 이 필드를 읽어도 의미 있는 값이 나오게.
+    for p in PARAMS:
+        encoded = encode(p.before, p.dtype, p.endian)
+        buf[p.offset:p.offset + len(encoded)] = encoded
+
+    return bytes(buf)
 
 
-def plant_decoys(buf: bytearray, param: Param, rng: random.Random) -> list[int]:
+def plant_decoys(
+    buf: bytearray, param: Param, rng: random.Random, avoid_offsets: list[int]
+) -> list[int]:
     """바꾼 값과 같은 바이트열을 다른 위치에도 심는다 (SPEC 7절).
 
     값으로 파일을 검색하면 여러 곳이 걸리므로, 변경 위치를 특정하려면
-    A/B diff가 반드시 필요해진다.
+    A/B diff가 반드시 필요해진다. avoid_offsets에는 이 세트뿐 아니라 다른 모든
+    세트의 실제 파라미터 offset도 넣는다 — 배경을 세트 간에 공유하므로, 다른
+    파라미터의 자리에 decoy를 심으면 그 파라미터 값이 이 파일에서만 달라져
+    "모든 세트가 같은 스키마를 공유한다"는 전제가 깨진다.
     """
     encoded_before = encode(param.before, param.dtype, param.endian)
     encoded_after = encode(param.after, param.dtype, param.endian)
@@ -130,6 +134,8 @@ def plant_decoys(buf: bytearray, param: Param, rng: random.Random) -> list[int]:
                 # 변경 지점과 겹치면 A/B가 두 곳에서 달라진다.
                 if abs(spot - param.offset) < 64:
                     continue
+                if any(abs(spot - off) < 64 for off in avoid_offsets):
+                    continue
                 if any(abs(spot - p) < 64 for p in planted):
                     continue
                 break
@@ -138,12 +144,13 @@ def plant_decoys(buf: bytearray, param: Param, rng: random.Random) -> list[int]:
     return planted
 
 
-def write_set(param: Param, force: bool) -> None:
-    # 세트마다 배경을 따로 만들되 시드는 고정해 재현 가능하게 한다.
-    rng = random.Random(f"{SEED}-{param.set_id}")
+def write_set(background: bytes, param: Param, force: bool) -> None:
+    # decoy 위치만 세트마다 다르게 흩뿌린다. 배경 자체는 모든 세트가 공유한다.
+    rng = random.Random(f"{SEED}-decoy-{param.set_id}")
 
-    buf = build_background(rng)
-    plant_decoys(buf, param, rng)
+    buf = bytearray(background)
+    other_offsets = [p.offset for p in PARAMS if p.set_id != param.set_id]
+    plant_decoys(buf, param, rng, other_offsets)
 
     encoded_before = encode(param.before, param.dtype, param.endian)
     encoded_after = encode(param.after, param.dtype, param.endian)
@@ -217,8 +224,9 @@ def main() -> int:
 
     SAMPLES_DIR.mkdir(exist_ok=True)
 
+    background = build_shared_background()
     for param in PARAMS:
-        write_set(param, args.force)
+        write_set(background, param, args.force)
 
     print(f"{len(PARAMS)}개 세트 생성 완료 ({FILE_SIZE // 1024}KB/파일)\n")
     print("검증:")

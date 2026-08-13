@@ -6,7 +6,17 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"%LOCALAPPDATA%\\Programs\\Python\\Python312\\python.exe\" .claude/hooks/guard.py"
+            "command": "\"C:/Users/opera star seo/AppData/Local/Programs/Python/Python312/python.exe\" .claude/hooks/guard.py"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node .claude/hooks/stop_check.mjs"
           }
         ]
       }

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """에이전트 경계를 강제하는 PreToolUse 훅. SPEC 6절·8절.
 
-두 가지를 막는다.
+세 가지를 막는다.
 
 1. samples/ 아래 파일의 수정 (Write·Edit 계열)
    업로드 원본이 바뀌면 "A와 B는 값 하나만 다르다"는 전제가 무너져
@@ -10,6 +10,10 @@
 2. Tester가 도는 동안 src/ 와 schema.json 읽기 (Read 계열)
    Tester가 파서를 보고 기대값을 쓰면 PyTest 통과가 자기채점이 된다.
    기대값은 오직 변경 진술에서만 나와야 한다.
+
+3. backlog.json을 파일 도구로 직접 읽거나 쓰는 것 (Read·Write 계열 모두)
+   backlog.json은 tools/backlog.mjs가 유일한 관리 창구다. 직접 손대면
+   enums 검증·id 형식 검사를 거치지 않은 채 SSOT가 깨질 수 있다.
 
 2번의 판정 방식: Tester를 띄우기 전에 메인 에이전트가 잠금 파일을 만들고,
 끝나면 지운다. 훅 payload에 서브에이전트 식별자가 실려 오는지 확실하지 않아
@@ -31,6 +35,8 @@ READ_TOOLS = {"Read", "Glob", "Grep", "NotebookRead"}
 
 PROTECTED_WRITE = ("samples",)
 PROTECTED_READ = ("src", "schema.json", "tools")
+BACKLOG_FILE = "backlog.json"
+BACKLOG_TOOLS = WRITE_TOOLS | READ_TOOLS
 
 HOOK_DIR = Path(__file__).resolve().parent
 LOCK = HOOK_DIR / ".tester-lock"
@@ -70,8 +76,12 @@ def record_payload_shape(payload: dict) -> None:
 
 def main() -> int:
     try:
-        payload = json.load(sys.stdin)
-    except (json.JSONDecodeError, ValueError):
+        # Windows 쪽 호출부가 stdin에 UTF-8 BOM을 붙여 보내는 경우가 있다.
+        # BOM이 있으면 json.load(sys.stdin)이 JSONDecodeError를 내고 그걸
+        # 삼켜 ALLOW로 빠지면서 훅이 통째로 무력화된다 — utf-8-sig로 읽어 방지한다.
+        raw = sys.stdin.buffer.read().decode("utf-8-sig")
+        payload = json.loads(raw)
+    except (json.JSONDecodeError, ValueError, UnicodeDecodeError):
         # 훅이 입력을 못 읽었다고 해서 작업을 막지는 않는다.
         return ALLOW
 
@@ -86,6 +96,13 @@ def main() -> int:
     target = resolve(str(raw))
     if target is None:
         return ALLOW
+
+    if tool in BACKLOG_TOOLS and target.name == BACKLOG_FILE and is_under(target, "."):
+        print(
+            "차단: 백로그는 tools/backlog.mjs로만 읽고 수정할 수 있습니다. list/set/validate를 쓰세요.",
+            file=sys.stderr,
+        )
+        return BLOCK
 
     if tool in WRITE_TOOLS:
         for name in PROTECTED_WRITE:

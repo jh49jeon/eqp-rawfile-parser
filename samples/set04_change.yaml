@@ -1,5 +1,5 @@
 set: set04
-unit: DEV
-name: nozzle_id
-before: "3"
-after: "5"
+unit: ETCH
+name: rf_power
+before: "850.5"
+after: "900.25"
