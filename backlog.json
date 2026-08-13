@@ -27,17 +27,17 @@
     },
     {
       "id": "LB-102",
-      "status": "done",
+      "status": "blocked",
       "priority": "검증",
       "category": "검증",
-      "title": "samples/ 쓰기 차단 hook",
-      "summary": "완료: samples/set01_a.bin 을 Write로 고치려 하면 차단 메시지가 뜨고 파일이 그대로다",
-      "where": ".claude/settings.json, .claude/hooks/protect_samples.py",
+      "title": "경계 강제 hook (samples 쓰기 차단 + Tester 읽기 차단)",
+      "summary": "완료: samples/set01_a.bin 을 Write로 고치려 하면 차단 메시지가 뜨고, .tester-lock 이 있는 동안 src/ 를 Read하면 차단된다",
+      "where": ".claude/settings.json, .claude/hooks/guard.py",
       "parent": null,
       "deps": [],
       "doc": "SPEC.md#8-안전장치",
-      "done_at": "2026-08-13",
-      "note": "업로드 원본이 바뀌면 'A와 B는 값 하나만 다르다'는 전제가 무너져 diff 추론 전체가 근거를 잃는다. 샘플 재생성은 Bash로 도는 tools/gen_samples.py만 허용한다"
+      "done_at": null,
+      "note": "blocked 이유: settings.json의 hook 변경은 세션 중에 적용되지 않는다. 스크립트 로직은 4가지 경우로 검증했으나 훅으로서 발동하는지는 세션 재시작 후에만 확인 가능하다. 재시작 후 실제 Write/Read로 차단을 확인해야 done이다"
     },
     {
       "id": "LB-103",
@@ -167,17 +167,17 @@
     },
     {
       "id": "LB-112",
-      "status": "todo",
+      "status": "done",
       "priority": "검증",
       "category": "검증",
       "title": "Tester 서브에이전트 정의",
-      "summary": "완료: .claude/agents/tester.md 가 있고, 읽을 수 있는 경로가 samples/ 로만 적혀 있다",
+      "summary": "완료: .claude/agents/tester.md 의 frontmatter에 tools가 Read·Glob·Write 로만 적혀 있고 Bash가 없다",
       "where": ".claude/agents/tester.md",
       "parent": null,
       "deps": [],
       "doc": "SPEC.md#6-에이전트-경계",
-      "done_at": null,
-      "note": "이 파일이 있어야 이후 테스트 작업을 시작할 수 있다. Tester는 src/ 와 schema.json을 읽지 않는다 — 기대값을 파서가 아니라 변경 진술에서만 도출시키기 위함이다. Tester는 파서를 절대 수정하지 않는다"
+      "done_at": "2026-08-13",
+      "note": "1층 방어. Bash를 빼는 것이 핵심이다 — Bash가 있으면 cat src/parser.py 로 훅을 우회할 수 있다. tools/gen_samples.py도 금지 대상이다. 거기엔 정답 인코딩이 그대로 들어 있다"
     },
     {
       "id": "LB-113",

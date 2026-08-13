@@ -2,11 +2,11 @@
   "hooks": {
     "PreToolUse": [
       {
-        "matcher": "Write|Edit|NotebookEdit",
+        "matcher": "Write|Edit|NotebookEdit|Read|Glob|Grep",
         "hooks": [
           {
             "type": "command",
-            "command": "python .claude/hooks/protect_samples.py"
+            "command": "\"%LOCALAPPDATA%\\Programs\\Python\\Python312\\python.exe\" .claude/hooks/guard.py"
           }
         ]
       }
