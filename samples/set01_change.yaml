@@ -1,0 +1,5 @@
+set: set01
+unit: COT
+name: chuck_temp
+before: "25.0"
+after: "30.0"
