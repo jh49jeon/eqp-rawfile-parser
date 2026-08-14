@@ -13,6 +13,13 @@ disable-model-invocation: true
 
 ## 절차
 
+0. **master 동기화와 브랜치 생성**: 작업 전에 `git checkout master && git pull origin master`로
+   master를 최신화한다 — 그동안 다른 사람의 머지가 있었을 수 있다. 그 위에서
+   `git checkout -b param-pipeline/<set 번호 또는 파라미터명>` 형식으로 새 브랜치를
+   만들고 이후 모든 커밋은 이 브랜치에서만 진행한다. **master에는 직접 커밋도
+   push도 하지 않는다** — 이 skill의 결과물은 항상 PR을 거쳐 다른 사람의 승인
+   후 머지된다.
+
 1. **작업 준비**: `node tools/backlog.mjs list`로 현재 상태를 확인하고, `samples/`의
    마지막 set 번호를 확인한다 (`ls samples | tail`).
 
@@ -43,8 +50,12 @@ disable-model-invocation: true
    `__pycache__`)를 지적하면 반영 여부를 판단해 정리한다. `backlog.json`은
    `tools/backlog.mjs`에 `add` 명령이 없으면 새 항목을 만들지 않는다 — 손으로
    고치지 않는다. 이번 사이클에서 실제로 바뀐 파일만 골라 커밋하고(사전에 이미
-   있던 무관한 drift는 건드리지 않는다), 원격 저장소가 연결돼 있다면 push까지
-   진행한다.
+   있던 무관한 drift는 건드리지 않는다), 0단계에서 만든 브랜치로 push한다.
+   `git push -u origin <브랜치명>` — master로는 push하지 않는다.
+
+8. **PR 생성 안내**: push 후에는 스스로 머지하지 않는다. `gh pr create`(또는 GitHub
+   웹 UI)로 PR을 만들도록 사용자에게 안내하고, 실제 머지는 다른 사람의 승인을
+   기다린다.
 
 ## 각 단계에서 지키는 것
 
