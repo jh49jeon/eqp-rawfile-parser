@@ -1,5 +1,5 @@
 {
-  "version": 66,
+  "version": 67,
   "parameters": [
     {
       "name": "chuck_temp",
@@ -1763,6 +1763,35 @@
           "set": "set66",
           "before": "3200000",
           "after": "3450000"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "last_calib_ts",
+      "unit": "IMPL",
+      "offset": 139264,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 139264,
+          "size": 4,
+          "dtype": "timestamp",
+          "endian": "little"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set67",
+          "before": "1712000000",
+          "after": "1712345678"
         }
       ],
       "superseded_by": null
