@@ -99,4 +99,5 @@ PARAMS: list[Param] = [
     Param("set63", "TRACK", "buffer_slot", "float64", "big", "0.020", "0.035", 0x21000),
     Param("set64", "ETCH", "strike_ts", "timestamp", "big", "1703500000", "1703586400", 0x21400),
     Param("set65", "CMP", "polish_uniformity", "float64", "little", "1.15", "0.92", 0x21800),
+    Param("set66", "IMPL", "dose_count", "int64", "big", "3200000", "3450000", 0x21C00),
 ]

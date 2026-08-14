@@ -1,5 +1,5 @@
 {
-  "version": 65,
+  "version": 66,
   "parameters": [
     {
       "name": "chuck_temp",
@@ -1734,6 +1734,35 @@
           "set": "set65",
           "before": "1.15",
           "after": "0.92"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "dose_count",
+      "unit": "IMPL",
+      "offset": 138244,
+      "size": 4,
+      "dtype": "int32",
+      "endian": "big",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 138240,
+          "size": 8,
+          "dtype": "int64",
+          "endian": "big"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set66",
+          "before": "3200000",
+          "after": "3450000"
         }
       ],
       "superseded_by": null
