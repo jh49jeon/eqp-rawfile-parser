@@ -1,5 +1,5 @@
 {
-  "version": 67,
+  "version": 68,
   "parameters": [
     {
       "name": "chuck_temp",
@@ -1792,6 +1792,35 @@
           "set": "set67",
           "before": "1712000000",
           "after": "1712345678"
+        }
+      ],
+      "superseded_by": null
+    },
+    {
+      "name": "focus_step",
+      "unit": "SCAN",
+      "offset": 140288,
+      "size": 2,
+      "dtype": "int16",
+      "endian": "little",
+      "table": null,
+      "row": null,
+      "column": null,
+      "status": "provisional",
+      "ambiguous": true,
+      "rejected_candidates": [
+        {
+          "offset": 140287,
+          "size": 2,
+          "dtype": "int16",
+          "endian": "big"
+        }
+      ],
+      "evidence": [
+        {
+          "set": "set68",
+          "before": "4",
+          "after": "6"
         }
       ],
       "superseded_by": null
