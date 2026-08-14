@@ -101,4 +101,5 @@ PARAMS: list[Param] = [
     Param("set65", "CMP", "polish_uniformity", "float64", "little", "1.15", "0.92", 0x21800),
     Param("set66", "IMPL", "dose_count", "int64", "big", "3200000", "3450000", 0x21C00),
     Param("set67", "IMPL", "last_calib_ts", "timestamp", "little", "1712000000", "1712345678", 0x22000),
+    Param("set68", "SCAN", "focus_step", "int16", "little", "4", "6", 0x22400),
 ]
