@@ -53,9 +53,30 @@ disable-model-invocation: true
    있던 무관한 drift는 건드리지 않는다), 0단계에서 만든 브랜치로 push한다.
    `git push -u origin <브랜치명>` — master로는 push하지 않는다.
 
-8. **PR 생성 안내**: push 후에는 스스로 머지하지 않는다. `gh pr create`(또는 GitHub
-   웹 UI)로 PR을 만들도록 사용자에게 안내하고, 실제 머지는 다른 사람의 승인을
-   기다린다.
+8. **PR 생성 안내**: push 후에는 스스로 머지하지 않는다. 아래 한글 포맷으로 PR
+   제목·본문을 작성해 안내한다. `gh` CLI가 있으면 `gh pr create --title "..." --body
+   "..."`로 바로 만들고, 없으면 GitHub의 `compare/<브랜치명>?quick_pull=1&title=...&body=...`
+   형식 URL(제목·본문 URL 인코딩)로 미리 채워진 PR 생성 링크를 사용자에게 준다.
+   실제 머지는 다른 사람의 승인을 기다린다.
+
+   **PR 제목**: `[param-pipeline] set<NN> <파라미터명> 추가`
+
+   **PR 본문 포맷**:
+   ```
+   ## 요약
+   - <파라미터명>(unit=<유닛>) 추가, set<NN> 세트로 검증
+
+   ## 변경 사항
+   - samples/set<NN>_a.bin, set<NN>_b.bin, set<NN>_change.yaml 추가
+   - schema.json에 <파라미터명> 항목 적립 (status=<confirmed|provisional>, dtype=<dtype>)
+   - tools/sample_params.py(또는 gen_samples.py)에 PARAMS 추가
+
+   ## 테스트
+   - pytest 전체 <N>개 통과 (회귀 없음)
+
+   ## 코드리뷰 메모
+   - <code-review 서브에이전트가 남긴 참고사항이 있으면 한 줄로. 없으면 "지적 사항 없음">
+   ```
 
 ## 각 단계에서 지키는 것
 
